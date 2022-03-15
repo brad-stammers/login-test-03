@@ -13,6 +13,13 @@ class Signup extends React.Component {
     };
   }
 
+  handleLogin = (data) => {
+    this.setState({
+      isLoggedIn: true,
+      user: data.user
+    })
+  };
+
   handleChange = (event) => {
     const {name, value} = event.target
     this.setState({ [name]: value })
@@ -30,7 +37,7 @@ class Signup extends React.Component {
     axios.post('http://localhost:3000/login', {user}, {withCredentials: true})
       .then(response => {
         if (response.data.logged_in) {
-          this.props.handleLogin(response.data)
+          this.handleLogin(response.data)
           this.redirect()
         } else {
           this.setState({ errors: response.data.errors })
@@ -47,9 +54,9 @@ class Signup extends React.Component {
     return (
       <div>
         <ul>
-          {this.state.errors.localeCompare(error => {
+          {this.state.errors.map((error => {
             return <li key={error}>{error}</li>
-          })}
+          }))}
         </ul>
       </div>
     )

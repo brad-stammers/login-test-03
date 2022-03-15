@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   helper_method :login!, :loggin_in?, :current_user, :authorised_user?, :logout!, :set_user
 
   def login!
-    session(:user_id) = @user.id
+    session[:user_id] = @user.id
   end
 
   def logged_in?

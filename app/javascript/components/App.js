@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import axios from "axios";
-import {BrowserRouter, Switch, Route} from 'react-router-dom'
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Home from "./Home"
 import Login from "./Login"
 import Signup from "./Signup"
@@ -45,11 +45,11 @@ class App extends React.Component {
     return (
       <React.Fragment>
         <BrowserRouter>
-          <Switch>
+          <Routes>
             <Route exact path='/' component={Home} />
             <Route exact path='/login' component={Login} />
             <Route exact path='/signup' component={Signup} />
-          </Switch>
+          </Routes>
         </BrowserRouter>
       </React.Fragment>
     );
